@@ -2,11 +2,10 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>Simple Framework for SSO</title>
+<title>Simple Framework for SSO - Client</title>
 </head>
 
 <body>
-	<a href="test/index.jsp">访问需要登录的页面</a>
-	<br>
+	访问成功。你好, XXX
 </body>
 </html>

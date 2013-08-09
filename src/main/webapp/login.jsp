@@ -2,7 +2,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>SSO Server Login</title>
+<title>Simple Framework for SSO - Server</title>
 </head>
 
 <body>
