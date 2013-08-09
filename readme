@@ -1,0 +1,10 @@
+Apps					Filter					SSOAuth
+							| <-- User
+		 <- has session ? - |
+doFilter <- Y --|			|
+		 -- N -------------	| - has session ? ->
+doFilter <- set session ---	| ---------- Y -----
+							|		 |-- N --> Login <---|
+							|					|----N---|
+doFilter <- set session ---	| -------- Y -------|
+							|
