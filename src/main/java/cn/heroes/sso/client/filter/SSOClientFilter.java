@@ -41,9 +41,17 @@ public abstract class SSOClientFilter implements Filter {
 		response.sendRedirect("http://127.0.0.1:8080/sso/ssoauth");
 	}
 	
+	/**
+	 * 与本站(App)是否存在会话
+	 * @return
+	 */
 	public abstract boolean hasSession();
 	
-	public abstract boolean setSession();
+	/**
+	 * 加入本站(App)会话
+	 * @return
+	 */
+	public abstract boolean addSession();
 
 	@Override
 	public void init(FilterConfig config) throws ServletException {
