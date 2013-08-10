@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 public abstract class SSOClientFilter implements Filter {
 	
+	/** 角户请求注销时的参数标识 */
 	private static final String LOGOUT_PARAM = "cn.heroes.sso.Logout";
 
 	@Override
@@ -29,7 +30,12 @@ public abstract class SSOClientFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse)resp;
 		HttpSession session = request.getSession();
 		
-		String aa = request.getParameter(LOGOUT_PARAM);
+		String flag = request.getParameter(LOGOUT_PARAM);
+		if(flag != null) {
+			// logout
+			removeSession(session);
+			return;
+		}
 		
 		if(hasSession(session)) {
 			chain.doFilter(req, resp);

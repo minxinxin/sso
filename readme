@@ -3,21 +3,39 @@ Simple Framework for SSO
 	Client是一个Filter, 加入到中Apps;
 	Server是一个Servlet, 实现用户登录模块后部署到Web容器.
 2.本框架只负责用户单点登录，统一登录，统一注销，应该不涉及任何用户权限的存储，权限应由各Apps自行管理。
-3.交互流程图如下：
+3.结构图如下图structure.gif
+4.交互流程图如下：
 Apps(Client)			Filter					SSOAuth(Server)
 							| <-- User
 		 <- has session ? - |
 doFilter <- Y --|			|
-		 -- N -------------	| ------- goto ----> has session ?
-doFilter <- add session ---	| -- goto -- Y -----
-							|		 |-- N --> Login <---|
-							|					|----N---|
-doFilter <- add session ---	| -------- Y -------|
+		 -- N -------------	| -- goto with referer url --> has session ?
+							| <- goto with ticket -- Y ---
+							| -- check ticket with RPC -->
+doFilter <- add session --- | ---------- Y ----- RPC -----
+check error method <------- | ---------- N ----- RPC -----
+							|		 			|--- N --> Login <--|
+							|								|-- N --|
+							| -- goto with ticket ------------- Y --> add session
+							| ...
 							|
 
-
-
-TODO
-1.server与client通讯加密
-2.在子应用运行时间长后,回来还有session吗,有.
-3.注销应该对server也有作用,其他子系统不注销。
+Question
+1.Apps是否保存自己的session?	
+	是, 不然Server的访问量会太大。
+2.用户亲自去验证对子站的可访问性，还是子站通过RPC去验证站询问?
+	RPC
+3.在子应用运行时间长后,回来还有session吗?
+	有, Tell Server I am alive.
+4.server与client通讯加密如何作?
+	
+5.注销是否对server有效,其他子系统是否也要一起注销。
+	是,是
+6.如何防止违照的验证站返回?
+	use ticket.
+7.
+	
+8.
+	
+9.
+	
