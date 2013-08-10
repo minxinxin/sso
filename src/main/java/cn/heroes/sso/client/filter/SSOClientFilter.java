@@ -1,6 +1,7 @@
 package cn.heroes.sso.client.filter;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -14,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 public abstract class SSOClientFilter implements Filter {
 	
-	private static final String aa = "";
+	private static final String LOGOUT_PARAM = "cn.heroes.sso.Logout";
 
 	@Override
 	public void destroy() {
@@ -28,7 +29,7 @@ public abstract class SSOClientFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse)resp;
 		HttpSession session = request.getSession();
 		
-		request.getParameter("");
+		String aa = request.getParameter(LOGOUT_PARAM);
 		
 		if(hasSession(session)) {
 			chain.doFilter(req, resp);
@@ -44,7 +45,7 @@ public abstract class SSOClientFilter implements Filter {
 	 * @throws IOException 
 	 */
 	private void gotoSSOServer(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		response.sendRedirect("http://127.0.0.1:8080/sso/ssoauth");
+		response.sendRedirect("http://127.0.0.1:8080/sso/ssoauth?continue=" + URLEncoder.encode("http://127.0.0.1:8080/sso/ssoauth?a=c&b=d", "UTF-8"));
 	}
 	
 	/**

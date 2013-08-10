@@ -2,6 +2,13 @@ package cn.heroes.sso.client.filter;
 
 import javax.servlet.http.HttpSession;
 
+/**
+ * <code>SSOClientFilter</code>的简单实现, 开发者可自行实现.
+ *
+ * @author Leon Kidd
+ * @version 1.00, 2013-8-10
+ * @since 1.0
+ */
 public class SimpleSSOClientFilter extends SSOClientFilter {
 
 	private static final String SESSION_FIELD = "cn.heroes.sso.client.Session";

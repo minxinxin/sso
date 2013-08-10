@@ -13,6 +13,7 @@ public class SSOAuthServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//request.setAttribute(Constants.REQUEST_HEADER_REFERER, request.getHeader("referer"));
+		//String referer = request.getHeader("referer");
 		System.out.println(request);
 	}
 
