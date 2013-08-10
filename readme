@@ -1,4 +1,10 @@
-Apps					Filter					SSOAuth
+Simple Framework for SSO
+1.框架分为Client和Server两块:
+	Client是一个Filter, 加入到中Apps;
+	Server是一个Servlet, 实现用户登录模块后部署到Web容器.
+2.本框架只负责用户单点登录，统一登录，统一注销，应该不涉及任何用户权限的存储，权限应由各Apps自行管理。
+3.交互流程图如下：
+Apps(Client)			Filter					SSOAuth(Server)
 							| <-- User
 		 <- has session ? - |
 doFilter <- Y --|			|
@@ -8,7 +14,10 @@ doFilter <- add session ---	| -- goto -- Y -----
 							|					|----N---|
 doFilter <- add session ---	| -------- Y -------|
 							|
-							|
+
+
+
+TODO
 1.server与client通讯加密
-2.在子应用运行时间长后，回来还有session吗
+2.在子应用运行时间长后,回来还有session吗,有.
 3.注销应该对server也有作用,其他子系统不注销。

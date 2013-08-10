@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public abstract class SSOClientFilter implements Filter {
+	
+	private static final String aa = "";
 
 	@Override
 	public void destroy() {
