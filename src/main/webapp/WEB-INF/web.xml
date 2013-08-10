@@ -14,7 +14,7 @@
 	</servlet-mapping>
 	<filter>
 		<filter-name>client</filter-name>
-		<filter-class>cn.heroes.sso.client.filter.SSOClientFilter</filter-class>
+		<filter-class>cn.heroes.sso.client.filter.SimpleSSOClientFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>client</filter-name>

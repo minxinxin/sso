@@ -9,3 +9,6 @@ doFilter <- add session ---	| -- goto -- Y -----
 doFilter <- add session ---	| -------- Y -------|
 							|
 							|
+1.server与client通讯加密
+2.在子应用运行时间长后，回来还有session吗
+3.注销应该对server也有作用,其他子系统不注销。
