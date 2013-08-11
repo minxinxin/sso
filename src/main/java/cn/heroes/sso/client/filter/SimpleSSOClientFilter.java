@@ -2,6 +2,8 @@ package cn.heroes.sso.client.filter;
 
 import javax.servlet.http.HttpSession;
 
+import cn.heroes.sso.commons.Constant;
+
 /**
  * <code>SSOClientFilter</code>的简单实现, 开发者可自行实现.
  *
@@ -11,22 +13,20 @@ import javax.servlet.http.HttpSession;
  */
 public class SimpleSSOClientFilter extends SSOClientFilter {
 
-	private static final String SESSION_FIELD = "cn.heroes.sso.client.Session";
-
 	@Override
 	public boolean hasSession(HttpSession session) {
-		Object attr = session.getAttribute(SESSION_FIELD);
+		Object attr = session.getAttribute(Constant.SESSION_LOGIN_FIELD);
 		return attr != null;
 	}
 
 	@Override
 	public void addSession(HttpSession session) {
-		session.setAttribute(SESSION_FIELD, new Object());
+		session.setAttribute(Constant.SESSION_LOGIN_FIELD, new Object());
 	}
 
 	@Override
 	public void removeSession(HttpSession session) {
-		session.removeAttribute(SESSION_FIELD);
+		session.removeAttribute(Constant.SESSION_LOGIN_FIELD);
 	}
 
 }
