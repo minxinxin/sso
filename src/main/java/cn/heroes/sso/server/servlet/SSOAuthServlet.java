@@ -14,7 +14,11 @@ public class SSOAuthServlet extends HttpServlet {
 			throws ServletException, IOException {
 		//request.setAttribute(Constants.REQUEST_HEADER_REFERER, request.getHeader("referer"));
 		//String referer = request.getHeader("referer");
-		System.out.println(request);
+		String referer = request.getParameter("continue");
+		if(referer == null) {
+			// goto account info page.
+		}
+		System.out.println(referer);
 	}
 
 	

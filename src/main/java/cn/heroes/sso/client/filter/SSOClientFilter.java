@@ -32,26 +32,29 @@ public abstract class SSOClientFilter implements Filter {
 		
 		String flag = request.getParameter(LOGOUT_PARAM);
 		if(flag != null) {
-			// logout
+			// TODO 1 logout
 			removeSession(session);
-			return;
-		}
-		
-		if(hasSession(session)) {
+		} else if(hasSession(session)) {
+			// TODO 2 tell server I am alive.
 			chain.doFilter(req, resp);
 		} else {
-			// 要先判断是不是从sso跳回来
+			// 要先判断是不是从sso跳回来 TODO 3 ticket
 			gotoSSOServer(request, response);
 		}
 	}
 	
 	/**
-	 * 用户跳转到SSO Server
+	 * 用户带着原先请求的链接跳转到SSO Server
 	 * @return
 	 * @throws IOException 
 	 */
 	private void gotoSSOServer(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		response.sendRedirect("http://127.0.0.1:8080/sso/ssoauth?continue=" + URLEncoder.encode("http://127.0.0.1:8080/sso/ssoauth?a=c&b=d", "UTF-8"));
+		StringBuffer requestURL = request.getRequestURL();
+		String queryString = request.getQueryString();
+		if(queryString != null) {
+			requestURL.append("?").append(queryString);
+		}
+		response.sendRedirect("http://127.0.0.1:8080/sso/ssoauth?continue=" + URLEncoder.encode(requestURL.toString(), "UTF-8"));
 	}
 	
 	/**

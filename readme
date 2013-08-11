@@ -11,7 +11,8 @@ Apps(Client)			Filter					SSOAuth(Server)
 doFilter <- Y --|			|
 		 -- N -------------	| -- goto with referer url --> has session ?
 							| <- goto with ticket -- Y ---
-							| -- check ticket with RPC -->
+							| -- check ticket with RPC --> delete ticket 
+							|				record app's url and user information
 doFilter <- add session --- | ---------- Y ----- RPC -----
 check error method <------- | ---------- N ----- RPC -----
 							|		 			|--- N --> Login <--|
@@ -33,8 +34,8 @@ Question
 	是,是
 6.如何防止违照的验证站返回?
 	use ticket.
-7.
-	
+7.sso应该有个信任域名列表,用来判断App过来的ticket有效性，以及回跳的地址是否可靠。
+	是
 8.
 	
 9.
