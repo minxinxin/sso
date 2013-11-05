@@ -22,7 +22,7 @@ check error method <------- | ---------- N ----- RPC -----
 							| ...
 							|
 
-Question
+### Question
 1.Apps是否保存自己的session?	
 	是, 不然Server的访问量会太大。
 2.用户亲自去验证对子站的可访问性，还是子站通过RPC去验证站询问?
