@@ -1,4 +1,5 @@
 Simple Framework for SSO
+---------------------------------
 1.框架分为Client和Server两块:
 	Client是一个Filter, 加入到中Apps;
 	Server是一个Servlet, 实现用户登录模块后部署到Web容器.
