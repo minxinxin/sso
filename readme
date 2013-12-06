@@ -23,21 +23,17 @@ check error method <------- | ---------- N ----- RPC -----
 							|
 
 ### Question
-1.Apps是否保存自己的session?	
-	是, 不然Server的访问量会太大。
-2.用户亲自去验证对子站的可访问性，还是子站通过RPC去验证站询问?
-	RPC
-3.在子应用运行时间长后,回来还有session吗?
-	有, Tell Server I am alive.
-4.server与client通讯加密如何作?
-	
-5.注销是否对server有效,其他子系统是否也要一起注销。
-	是,是
-6.如何防止违照的验证站返回?
-	use ticket.
-7.sso应该有个信任域名列表,用来判断App过来的ticket有效性，以及回跳的地址是否可靠。
-	是
-8.
-	
-9.
-	
+1.Apps是否保存自己的session?<br/>
+	是, 不然Server的访问量会太大。<br/>
+2.用户亲自去验证对子站的可访问性，还是子站通过RPC去验证站询问?<br/>
+	RPC<br/>
+3.在子应用运行时间长后,回来还有session吗?<br/>
+	有, Tell Server I am alive.<br/>
+4.server与client通讯加密如何作?<br/>
+	<br/>
+5.注销是否对server有效,其他子系统是否也要一起注销。<br/>
+	是,是<br/>
+6.如何防止违照的验证站返回?<br/>
+	use ticket.<br/>
+7.sso应该有个信任域名列表,用来判断App过来的ticket有效性，以及回跳的地址是否可靠。<br/>
+	是<br/>

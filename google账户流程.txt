@@ -1,0 +1,32 @@
+1.
+访问gmail:		mail.google.com
+自动跳到了登录页面	https://accounts.google.com/ServiceLogin?service=mail&passive=true&rm=false&continue=https://mail.google.com/mail/&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1
+
+
+2.
+任意google系统登录后
+(与goagent代理无关，不管是否使用代理，都能成功)
+访问时直接进入Gmail		mail.google.com
+
+3.
+登录都是到主系统(www.google.com.hk)中。
+主系统录登，访问子系统直接通过。
+主系统退出，全部退出,访问子系统时，一发现没有session，直接跳到。	https://www.google.com/accounts/ServiceLogin?service=ah&passive=true&continue=https://appengine.google.com/_ah/conflogin%3Fcontinue%3Dhttps://appengine.google.com/&ltmpl=ae
+appengine退出，跳转到，https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout%3Fcontinue%3Dhttps://appengine.google.com/start&service=ah
+云盘退出了，gmail却没有；如果云盘里点退出，gmail就退了。 这与它自身session机制有关。。。）
+Gmail退出，www.google.com也退出。
+云盘登录后，www.google.com也登录.
+子系统登录后，刷新https://accounts.google.com/ServiceLogin?service=mail&passive=true&rm=false&continue=htt..页面将直接进入continue页面.
+
+
+我的SSO规则
+1.一系统退出，所有的都退。
+2.一系统登录,全部登录.
+3.每次接收到请求都去Server上验证，还是自己保管session？
+	分两类：1.独立，登录单点，登出独立，自己保管session，不受其他系统登出影响（别人登出了不知道）。
+		2.同步，实时（Server push,Socket）向Server端校验session，一有系统退出就窗口提示。
+		(每次访问就到Server端校验，用户体验太差)
+
+
+
+http://154.189.1.50:8888/comet
