@@ -33,10 +33,11 @@ Gmail退出，www.google.com也退出。退出时的默认页面为https://accounts.google.com/S
 6.退出的按钮，默认为SSO-S上的登录页面with Continue
 7.Continue or Referer
 8.Redis建立session会话池{key: username, value: session}，用于RT模式下Client与Server间的bind
+9.RT模式，子系统首次登录都要先跳转到SSO-S再跳回来，以建立对应的session.
 
 
 *问题
-1.用户在子系统中的操作，session如何更新到主系统中，以防止主系统长时间session丢效。
+1.用户在子系统中的操作，session如何更新到主系统中，以防止主系统长时间session丢效，特别是RT类??
 
 
 
