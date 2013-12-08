@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import cn.heroes.sso.commons.Constant;
 
-public class SSOAuthServlet extends HttpServlet {
+public class AuthServlet extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)

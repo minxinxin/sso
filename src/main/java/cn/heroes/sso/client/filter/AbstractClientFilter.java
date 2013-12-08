@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import cn.heroes.sso.commons.Constant;
 
-public abstract class SSOClientFilter implements Filter {
+public abstract class AbstractClientFilter implements Filter {
 
 	@Override
 	public void destroy() {

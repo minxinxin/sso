@@ -11,7 +11,7 @@ import cn.heroes.sso.commons.Constant;
  * @version 1.00, 2013-8-10
  * @since 1.0
  */
-public class SimpleSSOClientFilter extends SSOClientFilter {
+public class SimpleClientFilter extends AbstractClientFilter {
 
 	@Override
 	public boolean hasSession(HttpSession session) {
