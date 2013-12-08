@@ -9,5 +9,7 @@
 	<a href="test/index.jsp">访问需要登录的页面</a>
 	<br>
 	<a href="http://localhost:8080/sso/test/a?b=c">http://localhost:8080/sso/test/a?b=c</a>
+	<br/>
+	<a href="/login">referer</a>
 </body>
 </html>

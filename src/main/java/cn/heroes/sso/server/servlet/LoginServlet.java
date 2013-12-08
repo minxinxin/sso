@@ -13,6 +13,11 @@ public class LoginServlet extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 		String action = req.getParameter("action");
+		if("".equals(action)) {
+			
+		} else if("".equals(action)) {
+			
+		}
 		
 		// The URL goto after this page
 		String conti = req.getParameter("continue");
