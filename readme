@@ -22,6 +22,25 @@ check error method <------- | ---------- N ----- RPC -----
 							| ...
 							|
 
+
+*我的SSO规则
+1.一系统登录,全部登录.
+2.一系统登出,除独立外，全部登出.
+3.每次接收到请求都去Server上验证，还是自己保管session？
+	分三类：1.stand alone	SA	独立：登录单点，登出独立，自己保管session，不受其他系统登出影响（别人登出了不知道）,但能影响“同步”者。
+		2.real time	RT	实时：实时（Server push,Socket）向Server端校验session，一有系统退出就窗口提示。
+		3.every time	ET	每次：每次对子系统的操作，系统都会拿ticket到Server上去校验(每次访问就跳转到Server端校验，用户体验太差)
+4.三类中，最常用的应该是3.ET
+5.提供Filter(拦截过滤访问)，JSP标签（登出按钮，登录按钮，拦截过滤访问）
+6.退出的按钮，默认为SSO-S上的登录页面with Continue
+7.Continue or Referer
+8.Redis建立session会话池{key: username, value: session}，用于RT模式下Client与Server间的bind
+9.RT模式，子系统首次登录都要先跳转到SSO-S再跳回来，以建立对应的session.
+10.应该有两种退出方法：
+	1.跳转到SSO-S，退出后停留在登录页面
+	2.在原页面不变，直接向SSO-S发退出请求（如何实现，ajax跨域问题）
+		JSP退出标签，应该可配置，“退出后回到原页面”和“退出后停在SSO-S登录页面with Continue”
+
 ### Question
 1.Apps是否保存自己的session?<br/>
 	是, 不然Server的访问量会太大。<br/>
@@ -37,3 +56,5 @@ check error method <------- | ---------- N ----- RPC -----
 	use ticket.<br/>
 7.sso应该有个信任域名列表,用来判断App过来的ticket有效性，以及回跳的地址是否可靠。<br/>
 	是<br/>
+8.用户在子系统中的操作，session如何更新到主系统中，以防止主系统长时间session丢效，特别是RT类??<br/>
+9.是否提供www.google.com有页右上角那样的不跳转登出方式
